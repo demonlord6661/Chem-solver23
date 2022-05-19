@@ -91,25 +91,6 @@ document.querySelector("#plus-button").addEventListener("click", function () {
     })
 
     document.querySelector("#changeMoleculeData").addEventListener("click", function () {
-        // document.querySelector("#input-chemicals").innerHTML = "";
-        // let insertIndex = 0;
-        // // console.log(completeFormulaHTML);
-        // for(let i = 0; i < completeFormulaHTML.length; i++) {
-        //     if(i == formulaHTMLIndex-1-atomAmount + offsetHTMLIndex) {
-        //         document.querySelector("#input-chemicals").innerHTML += `<p><sup>${document.querySelector("#changeMoleculeAmount").value}</sup></p>`
-        //         // savedMoleculeHTMLData[i] =  `<p><sup>${document.querySelector("#changeMoleculeAmount").value}</sup></p>`;
-        //         insertIndex = i;
-        //     }
-        //     document.querySelector("#input-chemicals").innerHTML += completeFormulaHTML[i];
-        //     // savedMoleculeHTMLData[i] = completeFormulaHTML[i];
-
-        // }
-        // // savedMoleculeHTMLData = document.querySelector("#input-chemicals").innerHTML;
-        // // completeFormulaHTML[0] =s savedMoleculeHTMLData;
-        // // console.log(savedMoleculeHTMLData);
-        // completeFormulaHTML.insert(insertIndex, `<p><sup>${document.querySelector("#changeMoleculeAmount").value}</sup></p>`)
-        // console.log(completeFormulaHTML);
-        // offsetHTMLIndex++;
     })
 
 })
