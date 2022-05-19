@@ -73,7 +73,7 @@ document.querySelector("#plus-button").addEventListener("click", function () {
     updateMoleculeData(moleculeWeight, moleculeMoles, 1);
 
     document.querySelector("#changeMoleculeMass").addEventListener("keyup", function (event) {
-        document.querySelector("#changeMoleculeMoles").value = (document.querySelector("#changeMoleculeMass").value / molarMass * 1000 / document.querySelector("#changeMoleculeAmount").value).toFixed(3);
+        document.querySelector("#changeMoleculeMoles").value = (document.querySelector("#changeMoleculeMass").value / molarMass * 1000 / document.querySelector("#changeMoleculeAmount").value).toFixed(5);
         savedMoles = document.querySelector("#changeMoleculeMoles").value;
 
         updateMoleculeData(document.querySelector("#changeMoleculeMass").value, document.querySelector("#changeMoleculeMoles").value, document.querySelector("#changeMoleculeAmount").value);
@@ -142,8 +142,8 @@ document.querySelector("#calculate-button").addEventListener("click", function (
             atomAmount++;
         })
         molarMass = (moleculeWeight / moleculeMoles) * 1000;
-        moleculeWeight.toFixed(3);
-        molarMass.toFixed(3);
+        moleculeWeight.toFixed(5);
+        molarMass.toFixed(5);
 
         if (atomAmount > 1) {
             document.querySelector(".outputData").innerHTML +=
@@ -169,8 +169,8 @@ document.querySelector("#calculate-button").addEventListener("click", function (
             atomAmount++;
         })
         molarMass = (moleculeWeight / moleculeMoles) * 1000;
-        moleculeWeight.toFixed(3);
-        molarMass.toFixed(3);
+        moleculeWeight.toFixed(5);
+        molarMass.toFixed(5);
 
         if (atomAmount > 1) {
             document.querySelector(".outputData").innerHTML +=
@@ -358,12 +358,12 @@ function displayAtom(element) {
     let savedMoles = 0;
 
     document.querySelector("#addAtomMass").addEventListener("keyup", function (event) {
-        document.querySelector("#addAtomMoles").value = (document.querySelector("#addAtomMass").value / parseFloat(currentElement.atomicMass.slice(0, -3)) * 1000 / document.querySelector("#addAtomAmount").value).toFixed(3);
+        document.querySelector("#addAtomMoles").value = (document.querySelector("#addAtomMass").value / parseFloat(currentElement.atomicMass.slice(0, -3)) * 1000 / document.querySelector("#addAtomAmount").value).toFixed(5);
         savedMoles = document.querySelector("#addAtomMoles").value;
     })
     document.querySelector("#addAtomMoles").addEventListener("keyup", function (event) {
         savedMoles = document.querySelector("#addAtomMoles").value;
-        document.querySelector("#addAtomMass").value = (document.querySelector("#addAtomMoles").value * parseFloat(currentElement.atomicMass.slice(0, -3)) / 1000).toFixed(3);
+        document.querySelector("#addAtomMass").value = (document.querySelector("#addAtomMoles").value * parseFloat(currentElement.atomicMass.slice(0, -3)) / 1000).toFixed(5);
     })
     document.querySelector("#addAtomAmount").addEventListener("keyup", function (event) {
         document.querySelector("#addAtomMoles").value = savedMoles / document.querySelector("#addAtomAmount").value;
