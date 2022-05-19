@@ -8,7 +8,7 @@
 }
 
 html {
-  zoom: 90%;
+  zoom: 85%;
 }
 
 body {
@@ -36,7 +36,7 @@ body {
 .element {
   background: white;
   border: 1px solid #aaa;
-  max-width: 46px;
+  max-width: 2.875rem;
   padding: 0.1em;
   font-family: "Helvetica";
   transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;

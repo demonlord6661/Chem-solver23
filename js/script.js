@@ -400,7 +400,7 @@ function updateMoleculeData(weight, moles, amount) {
 generatePTable();
 
 function solve(x) {
-    //firstly we find bigNumber, which will be all numbers multiplied together, in order to assume the last element is a constant amount of that
+    //firstly we need to find bigNumber, which will be all numbers we need multiplied together, in order to assume the last element is a constant amount of that
     bigNumber = 1;
     arrayOfNumbers = new Set(x.split(/\D+/g));
     arrayOfNumbers.delete("");
@@ -409,8 +409,8 @@ function solve(x) {
     //first actual step, we split into left hand side and right hand side, and then into separate molecules
     //number of molecules is number of variables, number of elements is number of equations, variables refer to the coefficients of the chemical equation
     left = x.split("->")[0].split("+");
-    righ = x.split("->")[1].split("+");
-    molecules = left.length + righ.length;
+    right = x.split("->")[1].split("+");
+    molecules = left.length + right.length;
 
     //then let's find what elements there are - this will also become how many equations we have, or the columns of our matrix minus one
     //we replace all the non-element characters, and then split based on the uppercase characters
@@ -437,7 +437,7 @@ function solve(x) {
             }
         }
         //same for right, except each item is negative
-        for (let molecule of righ) {
+        for (let molecule of right) {
             index = molecule.indexOf(elem);
             if (index == -1) buildArr.push(0);
             else {
@@ -481,10 +481,10 @@ function solve(x) {
     }
 
     //and finally we're done!
-    //sanity check to make sure it succeeded, if not then the matrix is insolvable
+    //checking to make sure it succeeded, if not then the matrix is insolvable
     if (rrefArray[0][elems.size] == 0 || rrefArray[0][elems.size] == undefined) return "Nope!";
 
-    //last step - get the results of the rref, which will be the coefficients of em except for the last one, which would be bigNumber (1 with typical implementation of the algorithm)
+    //last step - get the results of the rref, which will be the coefficients of em except for the last one, which would be the bigNumber (1 with typical implementation of the algorithm)
     bigNumber *= -1;
     gcd_calc = function (a, b) {
         if (!b) return a;
@@ -500,16 +500,16 @@ function solve(x) {
     coEffs.push(bigNumber);
     for (i = 0; i < coEffs.length; i++) coEffs[i] /= gcd;
 
-    //now we make it human readable
-    //we have left and right from before, let's not forget those!
+    //now we make it readable
+    //we have the left and right from before, let's not forget those!
     out = "";
     for (i = 0; i < coEffs.length; i++) {
         coEff = coEffs[i];
         if (coEff != 1) out += coEff;
         out += left.shift();
-        if (left.length == 0 && righ.length != 0) {
+        if (left.length == 0 && right.length != 0) {
             out += "->";
-            left = righ;
+            left = right;
         } else if (i != coEffs.length - 1) out += "+";
     }
     // console.log(out)
@@ -531,7 +531,7 @@ function convertAnswer(answer) {
     document.querySelector("#balancedEquation").innerHTML += proccessedAnswerHtml;
 }
 
-
+// the code down here is the parts that can not be solved within the code chem solver
 // console.log(solve("Al+Fe2O4->Fe+Al2O3"));
 // console.log(solve("Al+Fe2O3->Fe+Al2O3"));
 // console.log(solve("C7H16+O2->CO2+H2O"));
