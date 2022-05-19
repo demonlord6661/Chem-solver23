@@ -427,7 +427,6 @@ function solve(x) {
 
     //first actual step, we split into left hand side and right hand side, and then into separate molecules
     //number of molecules is number of variables, number of elements is number of equations, variables refer to the coefficients of the chemical equation
-    //note, the structure of this is changed a lot in the golfed version since right is the same as negative left
     left = x.split("->")[0].split("+");
     righ = x.split("->")[1].split("+");
     molecules = left.length + righ.length;
